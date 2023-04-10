@@ -1,18 +1,15 @@
 package com.bojaruniec.address;
 
-import com.bojaruniec.customer.Customer;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
 
     @Id
@@ -20,8 +17,7 @@ public class Address {
             strategy = GenerationType.IDENTITY
     )
     private long id;
-    private List<Customer> customers;
     private String street;
     private String streetNumber;
-    private String zipCode;
+    private String city;
 }
