@@ -1,6 +1,7 @@
 package com.bojaruniec.customer;
 
 import com.bojaruniec.address.Address;
+import com.bojaruniec.address.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final AddressService addressService;
     public List<Customer> getListOfCustomers() {
         return customerRepository.findAll();
     }
@@ -19,7 +21,7 @@ public class CustomerService {
     public void addCustomerWithAddress(CustomerRequest customerRequest) {
 
         List<Address> addresses = new ArrayList<>();
-        addresses.add(customerRequest.getAddress());
+        addresses.add(addressService.save(customerRequest.getAddress()));
 
         Customer customer = Customer.builder()
                 .name(customerRequest.getName())
