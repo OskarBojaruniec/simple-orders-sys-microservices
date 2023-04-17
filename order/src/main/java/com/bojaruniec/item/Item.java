@@ -14,9 +14,14 @@ import javax.persistence.*;
 public class Item {
 
     @Id
-
+    @SequenceGenerator(
+            name = "item_id_sequence",
+            sequenceName = "item_id_sequence"
+    )
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY)
+            strategy = GenerationType.SEQUENCE,
+            generator = "item_id_sequence"
+    )
     private long id;
     private String name;
     private Category category;

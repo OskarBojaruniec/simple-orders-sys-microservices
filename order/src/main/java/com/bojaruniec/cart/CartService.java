@@ -14,7 +14,7 @@ public class CartService {
     public Cart getCart(CartRequest cartRequest) {
 
         return Cart.builder()
-                .items(itemService.getItemsByName(cartRequest.getItemsNames()))
+                .itemsList(itemService.getItemsByName(cartRequest.getItemsNames()))
                 .build();
     }
 
