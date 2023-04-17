@@ -17,9 +17,14 @@ import java.time.LocalDateTime;
 public class Orders {
 
     @Id
-
+    @SequenceGenerator(
+            name = "orders_id_sequence",
+            sequenceName = "orders_id_sequence"
+    )
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY)
+            strategy = GenerationType.SEQUENCE,
+            generator = "orders_id_sequence"
+    )
     private long id;
     private long customerId;
     private LocalDateTime orderedAt;
